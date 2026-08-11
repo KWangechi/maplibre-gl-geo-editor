@@ -4142,7 +4142,7 @@ export class GeoEditor implements IControl {
       ellipse:
         '<svg viewBox="0 0 24 24" width="18" height="18"><ellipse cx="12" cy="12" rx="10" ry="6" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
       text_marker:
-        '<svg viewBox="0 0 24 24" width="18" height="18"><text x="12" y="16" text-anchor="middle" font-size="14" fill="currentColor">T</text></svg>',
+        '<svg viewBox="0 0 24 24" width="18" height="18"><text x="12" y="20" text-anchor="middle" font-size="20" fill="currentColor">T</text></svg>',
     };
     return icons[mode] || `<span>${mode[0].toUpperCase()}</span>`;
   }

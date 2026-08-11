@@ -121,6 +121,7 @@ map.on('load', () => {
         'circle',
         'marker',
         'circle_marker',
+        'text_marker',
         'ellipse',
         'freehand',
       ],
