@@ -189,6 +189,7 @@ function App() {
             'circle',
             'marker',
             'circle_marker',
+            'text_marker',
             'ellipse',
             'freehand',
           ]}
