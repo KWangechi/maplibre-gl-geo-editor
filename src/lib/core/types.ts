@@ -149,6 +149,41 @@ export interface GeoEditorOptions {
   attributePanelSideOffset?: number;
   /** Title of the attribute panel (default: 'Feature Properties') */
   attributePanelTitle?: string;
+  /**
+   * Build the popups the editor anchors to the map: the numerical-rotation
+   * form and the read-only feature-properties popup. Defaults to MapLibre's
+   * `Popup`. A host running the editor on another Style Spec engine
+   * (mapbox-gl) supplies that engine's popup class here, since a MapLibre
+   * `Popup` cannot be added to a mapbox-gl map.
+   */
+  createPopup?: (options: GeoEditorPopupOptions) => GeoEditorPopup;
+}
+
+/** The options the editor passes to {@link GeoEditorOptions.createPopup}. */
+export interface GeoEditorPopupOptions {
+  /** CSS max-width of the popup content. */
+  maxWidth: string;
+  /** Whether the popup renders its own close button. */
+  closeButton: boolean;
+  /** Whether a map click closes the popup. */
+  closeOnClick: boolean;
+  /** Class name added to the popup container. */
+  className: string;
+}
+
+/**
+ * The popup surface the editor drives, a structural subset of MapLibre's
+ * (and mapbox-gl's) `Popup` so either engine's class satisfies it as is.
+ * `addTo` takes the editor's map as an opaque object rather than a MapLibre
+ * `Map`, so a popup typed against another engine's map implements this
+ * without a cast.
+ */
+export interface GeoEditorPopup {
+  setLngLat(lngLat: [number, number] | { lng: number; lat: number }): this;
+  setDOMContent(node: Node): this;
+  setHTML(html: string): this;
+  addTo(map: object): this;
+  remove(): this;
 }
 
 // Make all options required except attributeSchema which can remain undefined
